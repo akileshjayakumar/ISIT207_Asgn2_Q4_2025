@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AZoom Car Rental - Electric Vehicle Rentals in Singapore</title>
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/26a1.png" />
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/26a1.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a class="logo" href="#home" onclick="showSection('home')">
+        <span class="logo-mark"><i class="fas fa-bolt"></i></span>
+        <div class="logo-wordmark">
+          <span class="wordmark">AZoom</span>
+          <span class="tagline">Electric Rentals</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active" onclick="showSection('home')">Home</a></li>
+        <li><a href="#allCars" class="nav-link" onclick="goToAllCars(event)">All Cars</a></li>
+        <li><a href="#booking" class="nav-link" onclick="showSection('booking')">Book Now</a></li>
+        <li><a href="#dashboard" class="nav-link" onclick="showSection('dashboard')">My Dashboard</a></li>
+        <li><a href="#login" class="nav-link" onclick="showSection('login')">Login</a></li>
+        <li class="nav-cta hidden" id="authButtonContainer">
+          <a href="#login" class="btn btn-nav" id="authButton" onclick="handleAuthClick()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span id="authButtonText">Logout</span>
+          </a>
+        </li>
+      </ul>
+      <button class="hamburger" type="button" aria-label="Toggle navigation" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HOME SECTION -->
+  <section id="home" class="app-section active-section">
+    <div class="home-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="hero-eyebrow">Singapore's Electric Rentals</span>
+          <h1 class="hero-heading">Drive cleaner with AZoom's curated EV collection.</h1>
+          <p class="hero-subheading">Book premium electric vehicles in just a few taps. From flexible plans to concierge
+            support, every ride is optimized for comfort and sustainability.</p>
+          <div class="hero-actions">
+            <a href="#booking" class="btn btn-primary" onclick="showSection('booking')">
+              <i class="fas fa-calendar-check"></i>
+              Book a car
+            </a>
+            <button type="button" class="btn btn-outline" onclick="goToAllCars()">
+              <i class="fas fa-car-side"></i>
+              Explore fleet
+            </button>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="stat-value">12</span>
+              <span class="stat-label">Electric models</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-value">4</span>
+              <span class="stat-label">Pick-up hubs</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-media">
+          <div class="hero-media-card">
+            <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1600&q=80"
+              alt="Person charging electric vehicle at charging station" />
+          </div>
+        </div>
+      </div>
+      <div class="hero-pattern"></div>
+    </div>
+
+    <section class="home-section features-section" id="why-azoom">
+      <div class="container">
+        <div class="section-heading text-left">
+          <span class="eyebrow">Why choose AZoom</span>
+          <h2>Electric rentals built for modern city living.</h2>
+          <p>Keep your journeys effortless with smart scheduling, inclusive insurance, and island-wide charging access.
+          </p>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+            <h3>100% Electric</h3>
+            <p>Reduce emissions with curated vehicles that balance range, performance, and comfort.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-clock"></i></div>
+            <h3>Flexible Rentals</h3>
+            <p>Go hourly, daily, or weekly. Extend on the fly with transparent pricing.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-shield-heart"></i></div>
+            <h3>Fully Insured</h3>
+            <p>Comprehensive insurance, roadside support, and staff assistance included.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-charging-station"></i></div>
+            <h3>Free Charging</h3>
+            <p>Tap into a fast-growing network of chargers across Singapore at no extra cost.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section process-section" id="how-it-works">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="eyebrow">How it works</span>
+          <h2>Five simple steps from booking to drop-off.</h2>
+        </div>
+        <div class="process-grid">
+          <article class="process-card">
+            <span class="process-number">1</span>
+            <h3>Book Online</h3>
+            <p>Reserve your electric vehicle in minutes with secure checkout.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-number">2</span>
+            <h3>Pick Up</h3>
+            <p>Collect your car at an AZoom hub with your booking confirmation.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-number">3</span>
+            <h3>Enjoy Your Drive</h3>
+            <p>Experience a quiet, fully charged drive with support whenever you need it.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-number">4</span>
+            <h3>Return Vehicle</h3>
+            <p>Drop your vehicle at the designated car park for a quick inspection.</p>
+          </article>
+          <article class="process-card">
+            <span class="process-number">5</span>
+            <h3>Pay Final Bill</h3>
+            <p>Receive a detailed summary and settle your balance online.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section fleet-section" id="allCars">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="eyebrow">All Cars</span>
+          <h2>Search the full electric fleet.</h2>
+          <p>Filter by body type or jump straight to a model to see seats, range, and daily rates.</p>
+        </div>
+        <div class="catalog-toolbar">
+          <div class="search-field">
+            <i class="fas fa-magnifying-glass"></i>
+            <input type="search" id="carSearchInput" placeholder="Search for a car" />
+          </div>
+          <div id="carTypeFilters" class="filter-chip-row"></div>
+          <button type="button" class="clear-filters" id="resetCarFilters">
+            <i class="fas fa-rotate"></i>
+            Reset filters
+          </button>
+        </div>
+        <div class="catalog-meta" id="carResultsCount"></div>
+        <div class="catalog-grid" id="allCarsGrid"></div>
+      </div>
+    </section>
+  </section>
+
+  <!-- BOOKING SECTION -->
+  <section id="booking" class="app-section booking-section">
+    <div class="container">
+      <h1 class="page-title">Book Your Electric Vehicle</h1>
+
+      <div class="booking-layout">
+        <!-- Available Cars -->
+        <div class="cars-selection">
+          <div class="search-filter-bar">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" id="carSearch" placeholder="Search vehicles..." oninput="filterCars()">
+            </div>
+            <select id="typeFilter" onchange="filterCars()">
+              <option value="">All Types</option>
+              <option value="Sedan">Sedan</option>
+              <option value="SUV">SUV</option>
+              <option value="Hatchback">Hatchback</option>
+              <option value="Sports">Sports</option>
+            </select>
+          </div>
+          <div id="availableCars" class="cars-list">
+            <!-- Cars will be loaded dynamically -->
+          </div>
+        </div>
+
+        <!-- Booking Form -->
+        <div class="booking-form-container">
+          <form id="bookingForm" class="booking-form">
+            <h2>Booking Details</h2>
+
+            <div class="selected-car-info" id="selectedCarInfo" style="display: none">
+              <h3>Selected Vehicle</h3>
+              <div id="selectedCarDisplay"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="pickupDate"><i class="fas fa-calendar"></i> Pick-up Date</label>
+              <input type="date" id="pickupDate" required />
+            </div>
+
+            <div class="form-group">
+              <label for="pickupTime"><i class="fas fa-clock"></i> Pick-up Time</label>
+              <input type="time" id="pickupTime" required value="09:00" />
+            </div>
+
+            <div class="form-group">
+              <label for="returnDate"><i class="fas fa-calendar"></i> Return Date</label>
+              <input type="date" id="returnDate" required />
+            </div>
+
+            <div class="form-group">
+              <label for="returnTime"><i class="fas fa-clock"></i> Return Time</label>
+              <input type="time" id="returnTime" required value="18:00" />
+            </div>
+
+            <div class="form-group">
+              <label for="pickupLocation"><i class="fas fa-map-marker-alt"></i> Pick-up Location</label>
+              <select id="pickupLocation" required>
+                <option value="">Select Location</option>
+                <option value="orchard">Orchard Road Office</option>
+                <option value="changi">Changi Airport Office</option>
+                <option value="marina">Marina Bay Office</option>
+                <option value="woodlands">Woodlands Office</option>
+              </select>
+            </div>
+
+            <div class="rental-summary" id="rentalSummary" style="display: none">
+              <h3>Rental Summary</h3>
+              <div class="summary-row">
+                <span>Daily Rate:</span>
+                <span id="dailyRate">$0</span>
+              </div>
+              <div class="summary-row">
+                <span>Number of Days:</span>
+                <span id="numberOfDays">0</span>
+              </div>
+              <div class="summary-row">
+                <span>Insurance:</span>
+                <span>$30/day</span>
+              </div>
+              <div class="summary-row total">
+                <span>Total Amount:</span>
+                <span id="totalAmount">$0</span>
+              </div>
+            </div>
+
+            <h3>Payment Information</h3>
+
+            <div class="form-group">
+              <label for="cardName"><i class="fas fa-user"></i> Cardholder Name</label>
+              <input type="text" id="cardName" required placeholder="Name on card" />
+            </div>
+
+            <div class="form-group">
+              <label for="cardNumber"><i class="fas fa-credit-card"></i> Card Number</label>
+              <input type="text" id="cardNumber" required placeholder="1234 5678 9012 3456" maxlength="19" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="expiryDate"><i class="fas fa-calendar"></i> Expiry Date</label>
+                <input type="text" id="expiryDate" required placeholder="MM/YY" maxlength="5" />
+              </div>
+
+              <div class="form-group">
+                <label for="cvv"><i class="fas fa-lock"></i> CVV</label>
+                <input type="text" id="cvv" required placeholder="123" maxlength="3" />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-check"></i> Confirm Booking
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN SECTION -->
+  <section id="login" class="app-section auth-section">
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <div class="auth-logo">
+            <span class="logo-mark"><i class="fas fa-bolt"></i></span>
+            <h1>AZoom</h1>
+          </div>
+        </div>
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" onclick="switchTab('login')">Login</button>
+          <button class="auth-tab" onclick="switchTab('register')">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form active-form">
+          <h2 class="auth-title">Welcome back</h2>
+          <p class="auth-subtitle">Enter your credentials to access your account</p>
+
+          <div class="input-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" required placeholder="you@example.com" autocomplete="email" />
+          </div>
+
+          <div class="input-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" required placeholder="Enter your password"
+              autocomplete="current-password" />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block auth-btn">
+            Sign In
+          </button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" class="auth-form">
+          <h2 class="auth-title">Create your account</h2>
+          <p class="auth-subtitle">Start renting electric vehicles today</p>
+
+          <div class="input-group">
+            <label for="registerName">Full Name</label>
+            <input type="text" id="registerName" required placeholder="John Doe" autocomplete="name" />
+          </div>
+
+          <div class="input-group">
+            <label for="registerEmail">Email Address</label>
+            <input type="email" id="registerEmail" required placeholder="you@example.com" autocomplete="email" />
+          </div>
+
+          <div class="input-group">
+            <label for="registerPhone">Phone Number</label>
+            <input type="tel" id="registerPhone" required placeholder="+65 9XXX XXXX" autocomplete="tel" />
+          </div>
+
+          <div class="input-group">
+            <label for="registerLicense">Driver's License Number</label>
+            <input type="text" id="registerLicense" required placeholder="S1234567A" />
+          </div>
+
+          <div class="input-group">
+            <label for="registerPassword">Password</label>
+            <input type="password" id="registerPassword" required placeholder="Min. 8 characters"
+              autocomplete="new-password" />
+          </div>
+
+          <div class="input-group">
+            <label for="registerConfirmPassword">Confirm Password</label>
+            <input type="password" id="registerConfirmPassword" required placeholder="Re-enter password"
+              autocomplete="new-password" />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block auth-btn">
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD SECTION -->
+  <section id="dashboard" class="app-section dashboard-section">
+    <div class="container">
+      <div class="dashboard-header">
+        <h1 class="page-title">My Dashboard</h1>
+        <button id="dashboardLogoutBtn" onclick="logout()" class="btn btn-secondary" style="display: none;">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+
+      <!-- Employee View -->
+      <div id="employeeView" class="employee-view" style="display: none">
+        <div class="dashboard-tabs">
+          <button class="tab-btn active" onclick="showEmployeeTab('rental-office')">
+            <i class="fas fa-building"></i> Rental Office
+          </button>
+          <button class="tab-btn" onclick="showEmployeeTab('inspection')">
+            <i class="fas fa-clipboard-check"></i> Inspection
+          </button>
+        </div>
+
+        <!-- Rental Office Tab -->
+        <div id="rentalOfficeTab" class="tab-content active-tab">
+          <h2>Process Car Rental</h2>
+          <div class="pending-bookings" id="pendingBookings">
+            <!-- Pending bookings will be loaded here -->
+          </div>
+        </div>
+
+        <!-- Inspection Tab -->
+        <div id="inspectionTab" class="tab-content">
+          <h2>Vehicle Returns & Inspection</h2>
+          <div class="returned-cars" id="returnedCars">
+            <!-- Returned cars will be loaded here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer View -->
+      <div id="customerView" class="customer-view" style="display: none">
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-car"></i>
+            </div>
+            <div class="stat-content">
+              <h3 id="activeRentals">0</h3>
+              <p>Active Rentals</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-history"></i>
+            </div>
+            <div class="stat-content">
+              <h3 id="completedRentals">0</h3>
+              <p>Completed Rentals</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-content">
+              <h3 id="pendingBookings">0</h3>
+              <p>Pending Bookings</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bookings-section">
+          <h2>My Bookings</h2>
+          <div id="customerBookings" class="bookings-list">
+            <!-- Customer bookings will be loaded here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Not Logged In View -->
+      <div id="notLoggedInView" class="not-logged-in">
+        <i class="fas fa-lock"></i>
+        <h2>Please Login</h2>
+        <p>You need to login to view your dashboard</p>
+        <a href="#login" onclick="showSection('login')" class="btn btn-primary">Go to Login</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modals for Employee Functions -->
+
+  <!-- Rental Office Modal -->
+  <div id="rentalOfficeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('rentalOfficeModal')">&times;</span>
+      <h2><i class="fas fa-building"></i> Process Rental</h2>
+
+      <div class="modal-body">
+        <div class="booking-info-card">
+          <h3>Booking Information</h3>
+          <div id="modalBookingDetails">
+            <!-- Booking details will be loaded here -->
+          </div>
+        </div>
+
+        <div class="verification-card">
+          <h3>Customer Verification</h3>
+          <form id="verificationForm">
+            <div class="form-group">
+              <label>
+                <input type="checkbox" required />
+                Valid driving license verified
+              </label>
+            </div>
+            <div class="form-group">
+              <label>
+                <input type="checkbox" required />
+                Credit card verified
+              </label>
+            </div>
+            <div class="form-group">
+              <label>
+                <input type="checkbox" required />
+                Customer identity verified
+              </label>
+            </div>
+
+            <h4>Vehicle Handover</h4>
+            <div class="form-group">
+              <label for="vehicleCondition">Vehicle Condition</label>
+              <select id="vehicleCondition" required>
+                <option value="">Select condition</option>
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="fair">Fair</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="fuelLevel">Battery Level</label>
+              <select id="fuelLevel" required>
+                <option value="">Select level</option>
+                <option value="100">100%</option>
+                <option value="90">90%</option>
+                <option value="80">80%</option>
+                <option value="70">70%</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mileage">Current Mileage (km)</label>
+              <input type="number" id="mileage" required placeholder="Enter mileage" />
+            </div>
+
+            <div class="form-group">
+              <label for="staffNotes">Staff Notes</label>
+              <textarea id="staffNotes" rows="3" placeholder="Any additional notes..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-check"></i> Complete Rental Process
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Inspection Modal -->
+  <div id="inspectionModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('inspectionModal')">&times;</span>
+      <h2><i class="fas fa-clipboard-check"></i> Vehicle Inspection</h2>
+
+      <div class="modal-body">
+        <div class="return-info-card">
+          <h3>Return Information</h3>
+          <div id="modalReturnInfo">
+            <!-- Return details will be loaded here -->
+          </div>
+        </div>
+
+        <div class="inspection-form-card">
+          <h3>Inspection Report</h3>
+          <form id="inspectionForm">
+            <h4><i class="fas fa-car"></i> Exterior Inspection</h4>
+            <div class="inspection-category">
+              <div class="inspection-item">
+                <label>Body Condition</label>
+                <select name="bodyCondition" required>
+                  <option value="good">Good</option>
+                  <option value="minor-damage">Minor Damage</option>
+                  <option value="major-damage">Major Damage</option>
+                </select>
+              </div>
+              <div class="inspection-item">
+                <label>Paint Condition</label>
+                <select name="paintCondition" required>
+                  <option value="good">Good</option>
+                  <option value="scratches">Scratches</option>
+                  <option value="dents">Dents</option>
+                </select>
+              </div>
+              <div class="inspection-item">
+                <label>Tyres Condition</label>
+                <select name="tyresCondition" required>
+                  <option value="good">Good</option>
+                  <option value="worn">Worn</option>
+                  <option value="damaged">Damaged</option>
+                </select>
+              </div>
+              <div class="inspection-item">
+                <label>Lights & Signals</label>
+                <select name="lightsCondition" required>
+                  <option value="working">All Working</option>
+                  <option value="some-faulty">Some Faulty</option>
+                  <option value="not-working">Not Working</option>
+                </select>
+              </div>
+            </div>
+
+            <h4><i class="fas fa-couch"></i> Interior Inspection</h4>
+            <div class="inspection-category">
+              <div class="inspection-item">
+                <label>Seats Condition</label>
+                <select name="seatsCondition" required>
+                  <option value="good">Good</option>
+                  <option value="stained">Stained</option>
+                  <option value="torn">Torn</option>
+                </select>
+              </div>
+              <div class="inspection-item">
+                <label>Dashboard Condition</label>
+                <select name="dashboardCondition" required>
+                  <option value="good">Good</option>
+                  <option value="scratched">Scratched</option>
+                  <option value="damaged">Damaged</option>
+                </select>
+              </div>
+              <div class="inspection-item">
+                <label>Cleanliness</label>
+                <select name="cleanliness" required>
+                  <option value="clean">Clean</option>
+                  <option value="dirty">Dirty</option>
+                  <option value="very-dirty">Very Dirty</option>
+                </select>
+              </div>
+              <div class="inspection-item">
+                <label>Air Conditioning</label>
+                <select name="airconCondition" required>
+                  <option value="working">Working</option>
+                  <option value="not-working">Not Working</option>
+                </select>
+              </div>
+            </div>
+
+            <h4><i class="fas fa-cogs"></i> Mechanical Inspection</h4>
+            <div class="inspection-category">
+              <div class="inspection-item">
+                <label>Battery Health</label>
+                <select name="batteryHealth" required>
+                  <option value="excellent">Excellent</option>
+                  <option value="good">Good</option>
+                  <option value="fair">Fair</option>
+                  <option value="poor">Poor</option>
+                </select>
+              </div>
+              <div class="inspection-item">
+                <label>Brakes</label>
+                <select name="brakesCondition" required>
+                  <option value="good">Good</option>
+                  <option value="needs-attention">Needs Attention</option>
+                </select>
+              </div>
+              <div class="inspection-item">
+                <label>Charging Port</label>
+                <select name="chargingPort" required>
+                  <option value="working">Working</option>
+                  <option value="damaged">Damaged</option>
+                </select>
+              </div>
+            </div>
+
+            <h4><i class="fas fa-dollar-sign"></i> Damage Assessment</h4>
+            <div class="form-group">
+              <label>
+                <input type="checkbox" id="damagesFound" /> Damages Found
+              </label>
+            </div>
+
+            <div id="damageDetails" style="display: none">
+              <div class="form-group">
+                <label for="damageDescription">Damage Description</label>
+                <textarea id="damageDescription" rows="3" placeholder="Describe the damages found..."></textarea>
+              </div>
+              <div class="form-group">
+                <label for="repairCost">Estimated Repair Cost (SGD)</label>
+                <input type="number" id="repairCost" placeholder="0.00" step="0.01" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inspectorNotes">Inspector Notes</label>
+              <textarea id="inspectorNotes" rows="3" placeholder="Additional inspection notes..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="inspectorName">Inspector Name</label>
+              <input type="text" id="inspectorName" required placeholder="Enter your name" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-check"></i> Complete Inspection & Generate Bill
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Return Vehicle Modal -->
+  <div id="returnModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('returnModal')">&times;</span>
+      <h2><i class="fas fa-undo"></i> Return Your Vehicle</h2>
+
+      <div class="modal-body">
+        <div class="rental-info-card">
+          <h3>Active Rental Information</h3>
+          <div id="modalActiveRentalInfo">
+            <!-- Active rental details will be loaded here -->
+          </div>
+        </div>
+
+        <div class="return-form-card">
+          <h3>Return Details</h3>
+          <form id="returnForm">
+            <div class="form-group">
+              <label for="returnCarPark"><i class="fas fa-parking"></i> Return Car Park</label>
+              <select id="returnCarPark" required>
+                <option value="">Select car park</option>
+                <option value="orchard">Orchard Road Car Park</option>
+                <option value="changi">Changi Airport Car Park</option>
+                <option value="marina">Marina Bay Car Park</option>
+                <option value="woodlands">Woodlands Car Park</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="returnMileage"><i class="fas fa-tachometer-alt"></i> Final Mileage
+                (km)</label>
+              <input type="number" id="returnMileage" required placeholder="Enter current mileage" />
+            </div>
+
+            <div class="form-group">
+              <label for="batteryLevel"><i class="fas fa-battery-three-quarters"></i> Battery
+                Level</label>
+              <select id="batteryLevel" required>
+                <option value="">Select battery level</option>
+                <option value="100">100%</option>
+                <option value="90">90%</option>
+                <option value="80">80%</option>
+                <option value="70">70%</option>
+                <option value="60">60%</option>
+                <option value="50">50% or less</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <h4>Pre-return Checklist</h4>
+              <div class="checklist">
+                <label>
+                  <input type="checkbox" required />
+                  Vehicle has been cleaned
+                </label>
+                <label>
+                  <input type="checkbox" required />
+                  All personal belongings removed
+                </label>
+                <label>
+                  <input type="checkbox" required />
+                  Charging cable returned
+                </label>
+                <label>
+                  <input type="checkbox" required />
+                  No visible damages
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="customerNotes"><i class="fas fa-comment"></i> Additional Notes</label>
+              <textarea id="customerNotes" rows="3" placeholder="Any issues or comments about the rental..."></textarea>
+            </div>
+
+            <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">
+              Note: After submission, our staff will inspect the vehicle and process your final bill.
+            </p>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-check"></i> Submit Return Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content modal-large">
+      <span class="close" onclick="closeModal('paymentModal')">&times;</span>
+      <h2><i class="fas fa-receipt"></i> Final Bill & Payment</h2>
+
+      <div class="modal-body">
+        <div class="payment-layout">
+          <!-- Bill Summary -->
+          <div class="bill-card">
+            <h3>Rental Summary</h3>
+            <div id="billSummary">
+              <!-- Bill details will be loaded here -->
+            </div>
+
+            <div class="bill-breakdown">
+              <h4>Cost Breakdown</h4>
+              <div class="bill-row">
+                <span>Rental Duration:</span>
+                <span id="rentalDuration">-</span>
+              </div>
+              <div class="bill-row">
+                <span>Daily Rate:</span>
+                <span id="billDailyRate">-</span>
+              </div>
+              <div class="bill-row">
+                <span>Rental Cost:</span>
+                <span id="rentalCost">-</span>
+              </div>
+              <div class="bill-row">
+                <span>Insurance:</span>
+                <span id="insuranceCost">-</span>
+              </div>
+              <div class="bill-row" id="damageRow" style="display: none">
+                <span>Damage Charges:</span>
+                <span id="damageCost" class="text-danger">-</span>
+              </div>
+              <div class="bill-row" id="cleaningRow" style="display: none">
+                <span>Cleaning Fee:</span>
+                <span id="cleaningFee" class="text-danger">-</span>
+              </div>
+              <div class="bill-row" id="batteryRow" style="display: none">
+                <span>Low Battery Fee:</span>
+                <span id="batteryFee" class="text-danger">-</span>
+              </div>
+              <div class="bill-row total">
+                <span><strong>Total Amount:</strong></span>
+                <span id="totalBillAmount"><strong>-</strong></span>
+              </div>
+            </div>
+
+            <div class="inspection-report" id="inspectionReport">
+              <h4>Inspection Report</h4>
+              <!-- Inspection details will be loaded here -->
+            </div>
+          </div>
+
+          <!-- Payment Form -->
+          <div class="payment-form-card">
+            <h3>Payment Method</h3>
+            <form id="paymentForm">
+              <div id="cardPayment" class="payment-details">
+                <div class="form-group">
+                  <label for="paymentCardName"><i class="fas fa-user"></i> Cardholder Name</label>
+                  <input type="text" id="paymentCardName" required placeholder="Name on card" />
+                </div>
+
+                <div class="form-group">
+                  <label for="paymentCardNumber"><i class="fas fa-credit-card"></i> Card Number</label>
+                  <input type="text" id="paymentCardNumber" required placeholder="1234 5678 9012 3456" maxlength="19" />
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="paymentExpiry"><i class="fas fa-calendar"></i> Expiry Date</label>
+                    <input type="text" id="paymentExpiry" required placeholder="MM/YY" maxlength="5" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="paymentCvv"><i class="fas fa-lock"></i> CVV</label>
+                    <input type="text" id="paymentCvv" required placeholder="123" maxlength="3" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" required />
+                  I agree to the payment terms and conditions
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-large">
+                <i class="fas fa-lock"></i> Pay Now
+              </button>
+
+              <div class="secure-payment">
+                <i class="fas fa-shield-alt"></i>
+                <span>Secure Payment - Your information is protected</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-mark"><i class="fas fa-bolt"></i></span>
+          <div class="logo-wordmark">
+            <span class="wordmark">AZoom</span>
+            <span class="tagline">Electric Mobility</span>
+          </div>
+        </div>
+        <p>Singapore's trusted electric rental platform for sustainable city travel.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#home" onclick="showSection('home')">Home</a></li>
+          <li><a href="#booking" onclick="showSection('booking')">Book now</a></li>
+          <li><a href="#dashboard" onclick="showSection('dashboard')">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Charging partners</a></li>
+          <li><a href="#">Insurance info</a></li>
+          <li><a href="#">Corporate plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="tel:+6561234567">+65 6123 4567</a></li>
+          <li><a href="mailto:hello@azoom.sg">hello@azoom.sg</a></li>
+          <li><a href="#">Help centre</a></li>
+        </ul>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 AZoom Car Rental</p><br><br>
+      <p>
+        Made by
+        <a target="_blank">
+          Akilesh Jayakumar
+        </a>
+        <span class="footer-separator">|</span>
+        UOW ID: <strong>7901240</strong>
+      </p>
+      <p>
+        <span>ISIT207 - Assignment 2</span>
+      </p>
+    </div>
+  </footer>
+
+  <div id="notification" class="notification"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
