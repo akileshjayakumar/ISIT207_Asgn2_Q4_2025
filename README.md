@@ -24,6 +24,13 @@ AZoom Car Rental is a modern Single-Page Application (SPA) for electric vehicle 
 
 ---
 
+## Demo Employee Credentials
+
+- Email: employee@azoom.sg
+- Password: demo123
+
+---
+
 ## Additional Credits & Creative Features Implementation
 
 #### 1. Modern Responsive UI/UX Design Quality
