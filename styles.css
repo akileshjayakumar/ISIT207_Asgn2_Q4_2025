@@ -889,12 +889,8 @@ button {
   gap: 0.5rem;
   padding: 0.65rem 1.25rem;
   border-radius: 10px;
-  border: 2px solid transparent;
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--secondary-color)
-  );
+  border: 1px solid #000;
+  background: var(--primary-color);
   color: #fff;
   font-weight: 600;
   font-size: 0.875rem;
